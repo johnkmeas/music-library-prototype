@@ -40,7 +40,7 @@ var printPlaylists = function (list) {
       console.log(item + ':',trackName, '-', trackCount, 'tracks')
     }
 }
-printPlaylists(library)
+// printPlaylists(library)
 
 // prints a list of all tracks, in the form:
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
@@ -58,9 +58,8 @@ var printTracks = function (list) {
     var trackAlbum = tracks[item].album;
     console.log(trackId+ ':', trackName, 'by', trackArtist, '(' + trackAlbum + ')')
   }
-
 }
-printTracks(library)
+// printTracks(library)
 
 // prints a list of tracks for a given playlist, in the form:
 // p01: Coding Music - 2 tracks
@@ -93,7 +92,7 @@ var printPlaylist = function (playlistId) {
   }
 
 }
-printPlaylist('p01')
+// printPlaylist('p01')
 
 // adds an existing track to an existing playlist
 
@@ -104,7 +103,7 @@ var addTrackToPlaylist = function (trackId, playlistId) {
   console.log(playlist)
 }
 
-addTrackToPlaylist('t03', 'p01')
+// addTrackToPlaylist('t03', 'p01')
 
 // generates a unique id
 // (use this for addTrack and addPlaylist)
@@ -126,6 +125,8 @@ var addTrack = function (name, artist, album) {
     album: album
 
   }
+
+  //Generates the track numebr in consistant format
   var addKeys = Number(Object.keys(library.tracks).length) + 1
   var addId = 't0' + addKeys;
   //console.log(typeof(addId))
@@ -137,6 +138,7 @@ var addTrack = function (name, artist, album) {
    console.log(library.tracks)
 }
 
+//Some tracks to add to library for testing
 var buddy = 'Buddy Holly';
 var peggySue = 'Peggy Sue';
 var buddyAlbum = 'Best of Buddy Holly and the Crickets'
@@ -145,8 +147,8 @@ var james = 'James Brown';
 var feelGood = 'I feel Good';
 var jamesAlbum = 'Best of James Brown';
 
-addTrack(peggySue, buddy, buddyAlbum)
-addTrack(feelGood, james, jamesAlbum)
+// addTrack(peggySue, buddy, buddyAlbum)
+// addTrack(feelGood, james, jamesAlbum)
 
 
 
@@ -156,6 +158,8 @@ addTrack(feelGood, james, jamesAlbum)
 var addPlaylist = function (name) {
   //console.log(name)
   //console.log(library.playlists)
+
+  //Generates
   var addKeys = Number(Object.keys(library.playlists).length) + 1
   //console.log(addKeys)
   var addId = 'p0' + addKeys;
@@ -173,6 +177,7 @@ var addPlaylist = function (name) {
 var myPlayList = 'John\s Rockabilly';
 var myPlayList2 = 'Chiptunes'
 addPlaylist(myPlayList)
+console.log('-------------')
 addPlaylist(myPlayList2)
 
 
