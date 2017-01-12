@@ -40,7 +40,7 @@ var printPlaylists = function (list) {
       console.log(item + ':',trackName, '-', trackCount, 'tracks')
     }
 }
-//printPlaylists(library)
+printPlaylists(library)
 
 // prints a list of all tracks, in the form:
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
@@ -60,7 +60,7 @@ var printTracks = function (list) {
   }
 
 }
-//printTracks(library)
+printTracks(library)
 
 // prints a list of tracks for a given playlist, in the form:
 // p01: Coding Music - 2 tracks
@@ -68,16 +68,43 @@ var printTracks = function (list) {
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 
 var printPlaylist = function (playlistId) {
+  // console.log('playlist ID:',playlistId)
+  var tracks = library.playlists[playlistId].tracks
+  var playListName = library.playlists[playlistId].name
+  var numberOfTracks = tracks.length
+
+  console.log(playlistId+':', playListName, '-', numberOfTracks, 'tracks');
+  // console.log('name of playlist:',library.playlists[playlistId].name)
+  // console.log('# of tracks:',library.playlists[playlistId].tracks.length)
+
+  for(var item in tracks){
+    var keyOfTrack = tracks[item]
+    //console.log(keyTrack)
+    //console.log(library.tracks[keyTrack])
+    var trackObj = library.tracks[keyOfTrack]
+    //console.log(trackObj)
+    // tracks = list.tracks
+    // console.log(trackObj.id)
+    // console.log(trackObj.name)
+    // console.log(trackObj.artist)
+    // console.log(trackObj.album)
+
+    console.log(trackObj.id+ ':', trackObj.name, 'by', trackObj.artist, '(' + trackObj.album + ')')
+  }
 
 }
-
+printPlaylist('p01')
 
 // adds an existing track to an existing playlist
 
 var addTrackToPlaylist = function (trackId, playlistId) {
-
+  var playlist = library.playlists[playlistId]
+  var tracks = playlist.tracks
+  tracks.push(trackId)
+  console.log(playlist)
 }
 
+addTrackToPlaylist('t03', 'p01')
 
 // generates a unique id
 // (use this for addTrack and addPlaylist)
@@ -90,15 +117,63 @@ var uid = function() {
 // adds a track to the library
 
 var addTrack = function (name, artist, album) {
+  //console.log(uid())
+  //console.log(name, artist, album)
+  var newTrack = {
+    id: 't0' + uid(),
+    name: name,
+    artist: artist,
+    album: album
 
+  }
+  var addKeys = Number(Object.keys(library.tracks).length) + 1
+  var addId = 't0' + addKeys;
+  //console.log(typeof(addId))
+  //console.log(newTrack)
+  var newId = newTrack.id
+  //console.log(newId)
+  library.tracks[addId] =  newTrack
+  //updatedLibrary = newTrack
+   console.log(library.tracks)
 }
+
+var buddy = 'Buddy Holly';
+var peggySue = 'Peggy Sue';
+var buddyAlbum = 'Best of Buddy Holly and the Crickets'
+
+var james = 'James Brown';
+var feelGood = 'I feel Good';
+var jamesAlbum = 'Best of James Brown';
+
+addTrack(peggySue, buddy, buddyAlbum)
+addTrack(feelGood, james, jamesAlbum)
+
+
 
 
 // adds a playlist to the library
 
 var addPlaylist = function (name) {
+  //console.log(name)
+  //console.log(library.playlists)
+  var addKeys = Number(Object.keys(library.playlists).length) + 1
+  //console.log(addKeys)
+  var addId = 'p0' + addKeys;
 
+  var newPlayList = {
+    id: 'p0'+ uid(),
+    name: name,
+    tracks:[]
+  }
+  //console.log(newPlayList)
+  library.playlists[addId] =  newPlayList
+  console.log(library.playlists)
 }
+
+var myPlayList = 'John\s Rockabilly';
+var myPlayList2 = 'Chiptunes'
+addPlaylist(myPlayList)
+addPlaylist(myPlayList2)
 
 
 // STRETCH:
@@ -107,6 +182,19 @@ var addPlaylist = function (name) {
 // tip: use "string".search("tri")
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search
 
-var printSearchResults = function(query) {
+// var printSearchResults = function(query) {
+//   var str = 'James'
+//   var tracks = library.tracks;
+//   for(var item in tracks){
+//     //.log(item)
+//     var trackName = library.tracks[item].name
+//     var trackArtist = library.tracks[item].artist
+//     var trackAlbum = library.tracks[item].album
+//     console.log(trackName)
+//     console.log(trackArtist)
+//     console.log(trackAlbum)
+//   }
+//   //console.log(str.search(query))
+// }
 
-}
+// printSearchResults('Monkey')
