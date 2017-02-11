@@ -65,6 +65,8 @@ function timeConvert(times){
   return totalTime;
 }
 
+
+
 // Create instance of Library
 var myLibrary = new Library('John Library', 'John');
 console.log('Library Instance =>', myLibrary, '\n');
@@ -92,7 +94,6 @@ console.log('Added track to playlist =>', myPlaylist, '\n');
 myLibrary.addPlaylist(myPlaylist);
 console.log('Added playlist to library=>', myLibrary.playlist[0], '\n');
 
-//
 myPlaylist.totalDuration();
 myPlaylist.overallRating();
 // console.log('overallRating =>', myPlaylist)
